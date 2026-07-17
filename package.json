@@ -6,14 +6,23 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "vitest run"
   },
-  "keywords": ["FIFA", "World Cup", "2026", "AI", "Stadium", "GenAI"],
+  "keywords": [
+    "FIFA",
+    "World Cup",
+    "2026",
+    "AI",
+    "Stadium",
+    "GenAI"
+  ],
   "author": "StadiumAI",
   "license": "MIT",
   "devDependencies": {
     "chart.js": "^4.5.1",
     "leaflet": "^1.9.4",
-    "vite": "^8.1.4"
+    "vite": "^8.1.4",
+    "vitest": "^4.1.10"
   }
 }

@@ -7,7 +7,7 @@
 import { addIncident } from '../data/mock-data.js';
 import { getAIIncidentResponse } from '../ai/insights-engine.js';
 import { getVenueById } from '../data/venues.js';
-import { observeAnimations } from '../utils/helpers.js';
+import { observeAnimations, escapeHTML } from '../utils/helpers.js';
 
 export function renderFanReport(container, venueId) {
   const venue = getVenueById(venueId || 'new-york');
@@ -83,11 +83,15 @@ export function renderFanReport(container, venueId) {
     const typeIcons = { medical: '🏥', critical: '🚨', warning: '⚠️', info: 'ℹ️' };
     const typeTitles = { medical: 'Medical Incident', critical: 'Security Incident', warning: 'Facility Hazard', info: 'Info Request' };
 
+    // Escape user inputs to prevent XSS vulnerabilities
+    const safeLocation = escapeHTML(location);
+    const safeDesc = escapeHTML(desc);
+
     const newIncident = {
       type,
       icon: typeIcons[type] || '🚨',
-      title: `${typeTitles[type]} - ${location}`,
-      detail: `${desc} • Reported by Fan App`,
+      title: `${typeTitles[type]} - ${safeLocation}`,
+      detail: `${safeDesc} • Reported by Fan App`,
     };
 
     // Add to shared incident list

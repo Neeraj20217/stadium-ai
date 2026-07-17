@@ -80,3 +80,14 @@ export function getChartColors(count) {
   ];
   return colors.slice(0, count);
 }
+
+// Escape HTML strings for XSS prevention
+export function escapeHTML(str) {
+  if (!str) return '';
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}

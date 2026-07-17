@@ -4,7 +4,7 @@
 // ============================================
 
 import { getVenueById } from '../data/venues.js';
-import { observeAnimations } from '../utils/helpers.js';
+import { observeAnimations, escapeHTML } from '../utils/helpers.js';
 import { getAINavigation } from '../ai/insights-engine.js';
 
 const locationCoords = {
@@ -406,7 +406,10 @@ async function loadAIRoute(venue, from, to, accessible) {
   const timeEl = document.getElementById('route-time');
   if (!content) return;
 
-  content.innerHTML = `<div style="padding:var(--sp-6);text-align:center;color:var(--text-tertiary);"><span style="animation:pulse 1.5s ease-in-out infinite;">🤖</span> AI generating ${accessible ? 'accessible ' : ''}route from "${from}" to "${to}"...</div>`;
+  const safeFrom = escapeHTML(from);
+  const safeTo = escapeHTML(to);
+
+  content.innerHTML = `<div style="padding:var(--sp-6);text-align:center;color:var(--text-tertiary);"><span style="animation:pulse 1.5s ease-in-out infinite;">🤖</span> AI generating ${accessible ? 'accessible ' : ''}route from "${safeFrom}" to "${safeTo}"...</div>`;
 
   // Update Interactive Stadium Map elements
   const cleanFrom = from.toLowerCase().trim();
