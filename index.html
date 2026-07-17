@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StadiumAI — FIFA World Cup 2026 Smart Stadium Hub</title>
+  <meta name="description" content="AI-powered stadium companion and operations intelligence dashboard for the FIFA World Cup 2026. Navigate venues, manage crowds, and enhance fan experiences with Generative AI." />
+  <meta name="keywords" content="FIFA, World Cup 2026, AI, Stadium, Smart Stadium, Crowd Management, Fan Experience, Accessibility, Sustainability" />
+
+  <!-- Favicons -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚽</text></svg>" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/css/design-system.css" />
+  <link rel="stylesheet" href="/css/layout.css" />
+  <link rel="stylesheet" href="/css/components.css" />
+  <link rel="stylesheet" href="/css/pages.css" />
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin="" />
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""></script>
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <div id="app">
+    <!-- Loading Screen -->
+    <div style="display:flex;align-items:center;justify-content:center;min-height:100vh;flex-direction:column;gap:1.5rem;">
+      <div style="font-size:4rem;animation:float 2s ease-in-out infinite;">⚽</div>
+      <div style="font-family:'Outfit',sans-serif;font-size:1.5rem;font-weight:700;background:linear-gradient(135deg,#D4AF37,#00E5A0);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">
+        StadiumAI
+      </div>
+      <div style="color:#5a6478;font-size:0.875rem;">Loading FIFA World Cup 2026 Hub...</div>
+    </div>
+  </div>
+
+  <!-- Main JS Module -->
+  <script type="module" src="/js/main.js"></script>
+</body>
+</html>
