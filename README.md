@@ -10,30 +10,30 @@ Using client-side edge computing and Google Gemini AI, StadiumAI bridges the gap
 
 ```mermaid
 graph TD
-    subgraph Fan Experience [🎉 Fan Companion App]
+    subgraph FanExp [🎉 Fan Companion App]
         A[Smart Wayfinding] -->|Calculate Path| B[Cubic Bezier Concourse Routing]
         A -->|Select Toggle| C[♿ Accessible Ramp/Elevator Path]
         A -->|Select Toggle| D[🔥 Live Seating Heatmap Overlay]
         E[Log Incident Form] -->|Report Hazards| F[AI Real-Time Response Generator]
     end
 
-    subgraph Command Center [🎯 Operations Hub]
+    subgraph CmdCent [🎯 Operations Hub]
         G[Real-Time Dashboard] -->|Live Stream| H[KPI Counter Animations]
         G -->|Active Feeds| I[AI Incident response Plan]
         G -->|GenAI Decision Cards| J[Execute & Modify Actions]
         J -->|Collaborative Slide-out| K[🤖 AI Copilot Panel]
     end
 
-    subgraph Core Engines [⚙️ Core Services]
+    subgraph CoreEng [⚙️ Core Services]
         L[Gemini AI Client] -->|API Key / Offline Fallbacks| F
         L -->|PA Announcement Drafting| K
         M[DOM Translation Engine] -->|Keyboard Auto-Detect| N[Language Switcher]
         M -->|Emoji-Tolerant Match| O[Static Dictionaries ES/FR/HI]
     end
 
-    Fan Experience -->|Sync Hazards| Command Center
-    Core Engines -->|Power Intelligence| Fan Experience
-    Core Engines -->|Power Intelligence| Command Center
+    FanExp -->|Sync Hazards| CmdCent
+    CoreEng -->|Power Intelligence| FanExp
+    CoreEng -->|Power Intelligence| CmdCent
 ```
 
 ---
