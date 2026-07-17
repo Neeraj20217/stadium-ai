@@ -70,7 +70,7 @@ function renderAppShell() {
         </select>
         <button class="btn btn-ghost btn-icon" id="btn-api-key" title="API Key Settings" style="font-size:var(--fs-lg);">⚙️</button>
         <select class="lang-select" id="lang-selector" title="Language">
-          ${['en', 'es', 'fr', 'pt', 'de', 'ja', 'ko', 'zh', 'ar', 'hi'].map(l => `
+          ${['en', 'es', 'fr', 'hi'].map(l => `
             <option value="${l}" ${l === getCurrentLanguage() ? 'selected' : ''}>${l.toUpperCase()}</option>
           `).join('')}
         </select>
