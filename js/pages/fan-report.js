@@ -99,13 +99,35 @@ export function renderFanReport(container, venueId) {
 
     // AI Response Plan Loading
     const responseEl = document.getElementById('ai-report-response');
-    responseEl.innerHTML = `
-      <div style="display:flex;flex-direction:column;gap:var(--sp-3);align-items:center;justify-content:center;height:100%;">
-        <div style="font-size:2rem;animation:pulse 1.5s ease-in-out infinite;">🤖</div>
-        <div style="font-weight:600;font-size:var(--fs-sm);color:var(--text-secondary);">GenAI Generating Response Plan...</div>
-        <div style="font-size:var(--fs-xs);color:var(--text-tertiary);">Gemini is calculating priority, dispatching resources and drafting announcements...</div>
-      </div>
-    `;
+    responseEl.textContent = '';
+    const wrapper = document.createElement('div');
+    wrapper.style.display = 'flex';
+    wrapper.style.flexDirection = 'column';
+    wrapper.style.gap = 'var(--sp-3)';
+    wrapper.style.alignItems = 'center';
+    wrapper.style.justifyContent = 'center';
+    wrapper.style.height = '100%';
+    
+    const bot = document.createElement('div');
+    bot.style.fontSize = '2rem';
+    bot.style.animation = 'pulse 1.5s ease-in-out infinite';
+    bot.textContent = '🤖';
+    
+    const title = document.createElement('div');
+    title.style.fontWeight = '600';
+    title.style.fontSize = 'var(--fs-sm)';
+    title.style.color = 'var(--text-secondary)';
+    title.textContent = 'GenAI Generating Response Plan...';
+    
+    const descEl = document.createElement('div');
+    descEl.style.fontSize = 'var(--fs-xs)';
+    descEl.style.color = 'var(--text-tertiary)';
+    descEl.textContent = 'Gemini is calculating priority, dispatching resources and drafting announcements...';
+    
+    wrapper.appendChild(bot);
+    wrapper.appendChild(title);
+    wrapper.appendChild(descEl);
+    responseEl.appendChild(wrapper);
 
     try {
       const plan = await getAIIncidentResponse(reported, venue);

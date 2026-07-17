@@ -500,8 +500,14 @@ function showToast(message, type = 'success') {
   `;
   
   const icon = type === 'success' ? '✅' : type === 'warning' ? '⚠️' : 'ℹ️';
-  const safeMessage = escapeHTML(message);
-  toast.innerHTML = `<span>${icon}</span><span style="flex:1;">${safeMessage}</span>`;
+  toast.textContent = '';
+  const iconSpan = document.createElement('span');
+  iconSpan.textContent = icon;
+  const msgSpan = document.createElement('span');
+  msgSpan.style.flex = '1';
+  msgSpan.textContent = message;
+  toast.appendChild(iconSpan);
+  toast.appendChild(msgSpan);
   
   toastEl.appendChild(toast);
 

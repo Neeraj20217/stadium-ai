@@ -406,10 +406,21 @@ async function loadAIRoute(venue, from, to, accessible) {
   const timeEl = document.getElementById('route-time');
   if (!content) return;
 
-  const safeFrom = escapeHTML(from);
-  const safeTo = escapeHTML(to);
-
-  content.innerHTML = `<div style="padding:var(--sp-6);text-align:center;color:var(--text-tertiary);"><span style="animation:pulse 1.5s ease-in-out infinite;">🤖</span> AI generating ${accessible ? 'accessible ' : ''}route from "${safeFrom}" to "${safeTo}"...</div>`;
+  content.textContent = '';
+  const wrapper = document.createElement('div');
+  wrapper.style.padding = 'var(--sp-6)';
+  wrapper.style.textAlign = 'center';
+  wrapper.style.color = 'var(--text-tertiary)';
+  
+  const botSpan = document.createElement('span');
+  botSpan.style.animation = 'pulse 1.5s ease-in-out infinite';
+  botSpan.textContent = '🤖';
+  
+  const textNode = document.createTextNode(` AI generating ${accessible ? 'accessible ' : ''}route from "${from}" to "${to}"...`);
+  
+  wrapper.appendChild(botSpan);
+  wrapper.appendChild(textNode);
+  content.appendChild(wrapper);
 
   // Update Interactive Stadium Map elements
   const cleanFrom = from.toLowerCase().trim();

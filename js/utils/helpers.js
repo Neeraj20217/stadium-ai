@@ -64,14 +64,6 @@ export function getGreeting() {
   return 'Good Evening';
 }
 
-// Create element helper
-export function createElement(tag, className = '', innerHTML = '') {
-  const el = document.createElement(tag);
-  if (className) el.className = className;
-  if (innerHTML) el.innerHTML = innerHTML;
-  return el;
-}
-
 // Simple chart color generator
 export function getChartColors(count) {
   const colors = [
