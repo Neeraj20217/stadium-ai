@@ -1,4 +1,19 @@
-import { describe, test, expect } from 'vitest';
+import { describe, test, expect, beforeAll } from 'vitest';
+
+// Mock localStorage for Node.js test environment
+global.localStorage = {
+  getItem: () => '',
+  setItem: () => {},
+  removeItem: () => {}
+};
+
+let helpers, insightsEngine, geminiClient;
+
+beforeAll(async () => {
+  helpers = await import('../js/utils/helpers.js');
+  insightsEngine = await import('../js/ai/insights-engine.js');
+  geminiClient = await import('../js/ai/gemini-client.js');
+});
 
 // Test 1: Coordinate check (does wayfinding route logic successfully route around the pitch limits?)
 describe('Smart Wayfinding Coordinate Boundaries', () => {
@@ -13,7 +28,7 @@ describe('Smart Wayfinding Coordinate Boundaries', () => {
 });
 
 // Test 2: Phrase translation (does the offline translation dictionary correctly translate phrases and restore emojis?)
-describe('Multilingual Translation Normalizer', () => {
+describe('Multilingual Translation Normalizer & Dictionary', () => {
   test('leading emojis should be extracted and prepended correctly', () => {
     const text = '🏟️ Explore Venues';
     const emojiMatch = text.match(/^([^\w\s\d,.:;?!'""()\-]+\s*)/);
@@ -22,6 +37,14 @@ describe('Multilingual Translation Normalizer', () => {
     
     expect(leadingEmoji).toBe('🏟️ ');
     expect(textWithoutEmoji).toBe('Explore Venues');
+  });
+
+  test('static dictionary translations must match key definitions', () => {
+    const spanishTranslation = insightsEngine.getStaticTranslation('Welcome to FIFA World Cup 2026', 'es');
+    expect(spanishTranslation).toBe('Bienvenido al Mundial FIFA 2026');
+
+    const hindiTranslation = insightsEngine.getStaticTranslation('Explore Venues', 'hi');
+    expect(hindiTranslation).toBe('स्टेडियम खोजें');
   });
 });
 
@@ -33,18 +56,36 @@ describe('Language Keyboard Detection', () => {
   });
 });
 
-// Test 4: Security Input Sanitizer
-describe('Security Input Sanitizer', () => {
-  test('malicious scripts must be escaped', () => {
+// Test 4: Security Input Sanitizer (XSS)
+describe('Security Input Sanitizer (escapeHTML)', () => {
+  test('malicious scripts and characters must be escaped safely', () => {
     const maliciousInput = '<script>alert("XSS")</script>';
-    const escaped = maliciousInput
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;')
-      .replace(/'/g, '&#039;');
+    const escaped = helpers.escapeHTML(maliciousInput);
     
     expect(escaped).not.toContain('<script>');
     expect(escaped).toContain('&lt;script&gt;');
+    expect(escaped).toContain('&quot;XSS&quot;');
+  });
+});
+
+// Test 5: Utility Helpers
+describe('Utility Helper Functions', () => {
+  test('formatNumber should simplify large numbers', () => {
+    expect(helpers.formatNumber(1200000)).toBe('1.2M');
+    expect(helpers.formatNumber(4500)).toBe('4.5K');
+    expect(helpers.formatNumber(850)).toBe('850');
+  });
+
+  test('getGreeting should return time-based prefix', () => {
+    const greeting = helpers.getGreeting();
+    expect(greeting).toMatch(/Good (Morning|Afternoon|Evening)/);
+  });
+});
+
+// Test 6: Ops Fallback Prompt Routing
+describe('Operations Fallback Prompt Routing', () => {
+  test('PA announcements query should match operations response', () => {
+    const response = geminiClient.getOpsFallbackResponse('Draft a PA announcement', null);
+    expect(response).toMatch(/(PA Announcement|Megafonía|Sonorisation)/i);
   });
 });
