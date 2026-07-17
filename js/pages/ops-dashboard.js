@@ -4,7 +4,7 @@
 // ============================================
 
 import { generateCrowdData, generateGateData, generateIncidents, generateOpsKPIs, generateCrowdHistory } from '../data/mock-data.js';
-import { observeAnimations, animateCounter } from '../utils/helpers.js';
+import { observeAnimations, animateCounter, escapeHTML } from '../utils/helpers.js';
 import { setChatContext, openChatWithPrefill } from '../components/chat-widget.js';
 import { generateDecisionSupportCards, getAICrowdPrediction, getAIIncidentResponse } from '../ai/insights-engine.js';
 
@@ -500,7 +500,8 @@ function showToast(message, type = 'success') {
   `;
   
   const icon = type === 'success' ? '✅' : type === 'warning' ? '⚠️' : 'ℹ️';
-  toast.innerHTML = `<span>${icon}</span><span style="flex:1;">${message}</span>`;
+  const safeMessage = escapeHTML(message);
+  toast.innerHTML = `<span>${icon}</span><span style="flex:1;">${safeMessage}</span>`;
   
   toastEl.appendChild(toast);
 

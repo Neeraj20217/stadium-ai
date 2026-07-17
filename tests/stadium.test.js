@@ -1,18 +1,36 @@
 import { describe, test, expect, beforeAll } from 'vitest';
 
-// Mock localStorage for Node.js test environment
+// Mock window, document, and localStorage for Node.js test environment
+global.window = {
+  location: { hash: '#/fan' },
+  addEventListener: () => {}
+};
+
+global.document = {
+  getElementById: () => ({
+    innerHTML: '',
+    classList: { add: () => {}, remove: () => {} }
+  }),
+  querySelector: () => ({
+    innerHTML: '',
+    classList: { add: () => {}, remove: () => {} }
+  }),
+  querySelectorAll: () => []
+};
+
 global.localStorage = {
   getItem: () => '',
   setItem: () => {},
   removeItem: () => {}
 };
 
-let helpers, insightsEngine, geminiClient;
+let helpers, insightsEngine, geminiClient, router;
 
 beforeAll(async () => {
   helpers = await import('../js/utils/helpers.js');
   insightsEngine = await import('../js/ai/insights-engine.js');
   geminiClient = await import('../js/ai/gemini-client.js');
+  router = await import('../js/utils/router.js');
 });
 
 // Test 1: Coordinate check (does wayfinding route logic successfully route around the pitch limits?)
@@ -87,5 +105,13 @@ describe('Operations Fallback Prompt Routing', () => {
   test('PA announcements query should match operations response', () => {
     const response = geminiClient.getOpsFallbackResponse('Draft a PA announcement', null);
     expect(response).toMatch(/(PA Announcement|Megafonía|Sonorisation)/i);
+  });
+});
+
+// Test 7: Router Navigation Paths
+describe('Client-Side SPA Routing Engine', () => {
+  test('should register routes and retrieve active path', () => {
+    router.registerRoute('/test-route', () => 'test-render');
+    expect(router.getCurrentRoute()).toBe('');
   });
 });
