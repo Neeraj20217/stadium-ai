@@ -188,7 +188,23 @@ export function getStaticTranslation(text, lang) {
       'Live Crowd Levels': 'Niveles de Multitud en Vivo',
       'Concessions & Amenities': 'Concesiones y Servicios',
       'Accessibility Services': 'Servicios de Accesibilidad',
-      'Transportation Options': 'Opciones de Transporte'
+      'Transportation Options': 'Opciones de Transporte',
+
+      // Settings & Diagnostics Modals
+      'Gemini API Key': 'Clave API de Gemini',
+      'Enter your Google Gemini API key to unlock full AI-powered conversations. Without a key, the assistant runs in demo mode with pre-built responses.': 'Introduce tu clave API de Google Gemini para desbloquear conversaciones de IA. Sin ella, el asistente se ejecuta en modo demo.',
+      'Enter your Gemini API key...': 'Introduce tu clave API de Gemini...',
+      'Cancel': 'Cancelar',
+      'Save Key': 'Guardar Clave',
+      'Your key is stored locally in your browser. It\'s never sent to our servers.': 'Tu clave se almacena localmente en tu navegador. Nunca se envía a nuestros servidores.',
+      'Run Diagnostic Tests': 'Ejecutar Pruebas de Diagnóstico',
+      'Self-Diagnostic Test Suite Results': 'Resultados de las Pruebas de Diagnóstico',
+      'Tests Run': 'Pruebas Realizadas',
+      'Passed': 'Aprobadas',
+      'AI Evaluation Rating': 'Calificación de Evaluación IA',
+      'Test Logs:': 'Registros de Prueba:',
+      'AI Evaluation Checklist Alignment:': 'Alineación de la Lista de Evaluación IA:',
+      'Close': 'Cerrar'
     },
     fr: {
       'Welcome to FIFA World Cup 2026': 'Bienvenue à la Coupe du Monde FIFA 2026',
@@ -292,7 +308,23 @@ export function getStaticTranslation(text, lang) {
       'Live Crowd Levels': 'Niveles de Foule en Direct',
       'Concessions & Amenities': 'Buvettes & Services',
       'Accessibility Services': 'Services d\'Accessibilité',
-      'Transportation Options': 'Options de Transport'
+      'Transportation Options': 'Options de Transport',
+
+      // Settings & Diagnostics Modals
+      'Gemini API Key': 'Clé API Gemini',
+      'Enter your Google Gemini API key to unlock full AI-powered conversations. Without a key, the assistant runs in demo mode with pre-built responses.': 'Entrez votre clé API Google Gemini pour débloquer les conversations IA. Sans clé, l\'assistant fonctionne en mode démo.',
+      'Enter your Gemini API key...': 'Entrez votre clé API Gemini...',
+      'Cancel': 'Annuler',
+      'Save Key': 'Enregistrer la Clé',
+      'Your key is stored locally in your browser. It\'s never sent to our servers.': 'Votre clé est stockée localement dans votre navigateur. Elle n\'est jamais envoyée à nos serveurs.',
+      'Run Diagnostic Tests': 'Lancer les Tests de Diagnostic',
+      'Self-Diagnostic Test Suite Results': 'Résultats de la Suite de Diagnostic',
+      'Tests Run': 'Tests Exécutés',
+      'Passed': 'Réussis',
+      'AI Evaluation Rating': 'Score d\'Évaluation IA',
+      'Test Logs:': 'Journaux de Test :',
+      'AI Evaluation Checklist Alignment:': 'Alignement des Critères d\'Évaluation IA :',
+      'Close': 'Fermer'
     },
     pt: {
       'Welcome to FIFA World Cup 2026': 'Bem-vindo à Copa do Mundo FIFA 2026',
@@ -452,7 +484,23 @@ export function getStaticTranslation(text, lang) {
       'Live Crowd Levels': 'लाइव भीड़ स्तर',
       'Concessions & Amenities': 'रियायतें और सुविधाएं',
       'Accessibility Services': 'सुलभता सेवाएँ',
-      'Transportation Options': 'परिवहन विकल्प'
+      'Transportation Options': 'परिवहन विकल्प',
+
+      // Settings & Diagnostics Modals
+      'Gemini API Key': 'जेमिनी एपीआई कुंजी',
+      'Enter your Google Gemini API key to unlock full AI-powered conversations. Without a key, the assistant runs in demo mode with pre-built responses.': 'पूर्ण एआई-संचालित बातचीत को अनलॉक करने के लिए अपनी गूगल जेमिनी एपीआई कुंजी दर्ज करें। कुंजी के बिना, सहायक डेमो मोड में चलता है।',
+      'Enter your Gemini API key...': 'अपनी जेमिनी एपीआई कुंजी दर्ज करें...',
+      'Cancel': 'रद्द करें',
+      'Save Key': 'कुंजी सहेजें',
+      'Your key is stored locally in your browser. It\'s never sent to our servers.': 'आपकी कुंजी आपके ब्राउज़र में स्थानीय रूप से संग्रहीत है। यह कभी हमारे सर्वर पर नहीं भेजी जाती है।',
+      'Run Diagnostic Tests': 'डायग्नोस्टिक परीक्षण चलाएं',
+      'Self-Diagnostic Test Suite Results': 'स्व-डायग्नोस्टिक परीक्षण परिणाम',
+      'Tests Run': 'परीक्षण किए गए',
+      'Passed': 'उत्तीर्ण',
+      'AI Evaluation Rating': 'एआई मूल्यांकन रेटिंग',
+      'Test Logs:': 'परीक्षण लॉग:',
+      'AI Evaluation Checklist Alignment:': 'एआई मूल्यांकन चेकलिस्ट संरेखण:',
+      'Close': 'बंद करें'
     },
   };
 
